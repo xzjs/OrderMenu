@@ -91,6 +91,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="OrderDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderDBDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDBDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderDBDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reception.cs">
@@ -153,6 +163,28 @@
     </None>
     <None Include="OrderDBDataSet.xss">
       <DependentUpon>OrderDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OrderDBDataSet1.xsc">
+      <DependentUpon>OrderDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="OrderDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OrderDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OrderDBDataSet1.xss">
+      <DependentUpon>OrderDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="OrderDBDataSet2.xsc">
+      <DependentUpon>OrderDBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="OrderDBDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OrderDBDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OrderDBDataSet2.xss">
+      <DependentUpon>OrderDBDataSet2.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

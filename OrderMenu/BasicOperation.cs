@@ -331,5 +331,90 @@ namespace OrderMenu
                 return false;
             }
         }
+
+        public List<T> Vlookup(T t,string str)
+        {
+            try
+            {
+                List<T> result = default(List<T>);
+                switch (t.GetType().ToString())
+                {
+                    case "OrderMenu.Worker":
+                        Worker w = t as Worker;
+                        var query = from m in dc.Worker
+                            where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Profession.Contains(str))
+                            select m;
+                            result = (List<T>)(Object)query.ToList();
+                        
+                        break;
+                    case "OrderMenu.Menu":
+                        Menu menu = t as Menu;
+                        var query1 = from m in dc.Menu
+                            where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Price.ToString().Contains(str))||(m.Style.Contains(str))
+                            select m;
+                            result = (List<T>)(Object)query1.ToList();
+                        
+                        break;
+                    //case "OrderMenu.WorkerMenu":
+                    //    WorkerMenu wm = t as WorkerMenu;
+                    //    var query2 = from m in dc.Worker
+                    //        where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Profession.Contains(str))
+                    //        select m;
+                    //        result = (List<T>)(Object)query2.ToList();
+                        
+                    //    break;
+                    //case "OrderMenu.DeskMenu":
+                    //    DeskMenu dm = t as DeskMenu;
+                    //    if (dm.ID == 0)
+                    //    {
+                    //        var query = from m in dc.DeskMenu
+                    //                    select m;
+                    //        result = (List<T>)(Object)query.ToList();
+                    //    }
+                    //    else
+                    //    {
+                    //        var query = from m in dc.DeskMenu
+                    //                    where m.ID == dm.ID
+                    //                    select m;
+                    //        result = (List<T>)(Object)query.ToList();
+                    //    }
+                    //    break;
+                    case "OrderMenu.Room":
+                        Room r = t as Room;
+                        var query2 = from m in dc.Room
+                            where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Specification.Contains(str))
+                            select m;
+                            result = (List<T>)(Object)query2.ToList();
+                        
+                        break;
+                    case "OrderMenu.Desk":
+                        Desk d = t as Desk;
+                        var query3 = from m in dc.Desk
+                            where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Profession.Contains(str))
+                            select m;
+                            result = (List<T>)(Object)query3.ToList();
+                        
+                        break;
+                    //case "OrderMenu.OrderDesk":
+                    //    OrderDesk od = t as OrderDesk;
+                    //    if (od.ID == 0)
+                    //    {
+                    //        var query = from m in dc.OrderDesk
+                    //                    select m;
+                    //        result = (List<T>)(Object)query.ToList();
+                    //    }
+                    //    else
+                    //    {
+                    //        var query = from m in dc.OrderDesk
+                    //                    where m.ID == od.ID
+                    //                    select m;
+                    //        result = (List<T>)(Object)query.ToList();
+                    //    }
+                    //    break;
+                    default:
+                        return null;
+                }
+                return result;
+        }
     }
 }
