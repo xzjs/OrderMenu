@@ -130,5 +130,25 @@ namespace OrderMenu
                 return false;
             }
         }
+
+        /// <summary>
+        /// 按条件查找
+        /// </summary>
+        /// <param name="str">条件</param>
+        /// <returns></returns>
+        public static List<Worker> Vlookup(string str)
+        {
+            try
+            {
+                var query = from m in dc.Worker
+                            where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Profession.Contains(str))
+                            select m;
+                return query.ToList();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

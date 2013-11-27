@@ -128,7 +128,7 @@ namespace OrderMenu
         /// <summary>
         /// 查找
         /// </summary>
-        /// <param name="t">查找的对象，若id为空则查所有，不为空只差id所指定的那一条</param>
+        /// <param name="t">查找的对象，若id为0则查所有，否则只查id所指定的那一条</param>
         /// <returns></returns>
         public List<T> Select(T t)
         {
@@ -139,7 +139,7 @@ namespace OrderMenu
                 {
                     case "OrderMenu.Worker":
                         Worker w = t as Worker;
-                        if (w.ID == null)
+                        if (w.ID == 0)
                         {
                             var query = from m in dc.Worker
                                         select m;
@@ -155,7 +155,7 @@ namespace OrderMenu
                         break;
                     case "OrderMenu.Menu":
                         Menu menu = t as Menu;
-                        if (menu.ID == null)
+                        if (menu.ID == 0)
                         {
                             var query = from m in dc.Menu
                                         select m;
@@ -171,7 +171,7 @@ namespace OrderMenu
                         break;
                     case "OrderMenu.WorkerMenu":
                         WorkerMenu wm = t as WorkerMenu;
-                        if (wm.ID == null)
+                        if (wm.ID == 0)
                         {
                             var query = from m in dc.WorkerMenu
                                         select m;
@@ -187,7 +187,7 @@ namespace OrderMenu
                         break;
                     case "OrderMenu.DeskMenu":
                         DeskMenu dm = t as DeskMenu;
-                        if (dm.ID == null)
+                        if (dm.ID == 0)
                         {
                             var query = from m in dc.DeskMenu
                                         select m;
@@ -203,7 +203,7 @@ namespace OrderMenu
                         break;
                     case "OrderMenu.Room":
                         Room r = t as Room;
-                        if (r.ID == null)
+                        if (r.ID == 0)
                         {
                             var query = from m in dc.Room
                                         select m;
@@ -219,7 +219,7 @@ namespace OrderMenu
                         break;
                     case "OrderMenu.Desk":
                         Desk d = t as Desk;
-                        if (d.ID == null)
+                        if (d.ID == 0)
                         {
                             var query = from m in dc.Desk
                                         select m;
@@ -235,7 +235,7 @@ namespace OrderMenu
                         break;
                     case "OrderMenu.OrderDesk":
                         OrderDesk od = t as OrderDesk;
-                        if (od.ID == null)
+                        if (od.ID == 0)
                         {
                             var query = from m in dc.OrderDesk
                                         select m;

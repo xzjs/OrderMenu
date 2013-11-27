@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace OrderMenu
 {
-    public partial class Form1 : Form
+    public partial class Cook : Form
     {
-        public Form1()
+        public Cook(Worker w)
         {
             InitializeComponent();
         }
