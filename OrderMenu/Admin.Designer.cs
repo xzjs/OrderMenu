@@ -39,29 +39,29 @@
             this.professionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pwdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除用户ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改用户ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddWorkertoolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteWorkerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateWorkerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.workerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.orderDBDataSet = new OrderMenu.OrderDBDataSet();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.workerTableAdapter = new OrderMenu.OrderDBDataSetTableAdapters.WorkerTableAdapter();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.orderDBDataSet2 = new OrderMenu.OrderDBDataSet2();
-            this.menuBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.menuTableAdapter = new OrderMenu.OrderDBDataSet2TableAdapters.MenuTableAdapter();
             this.iDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.styleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.添加菜ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除菜ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改菜ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.orderDBDataSet2 = new OrderMenu.OrderDBDataSet2();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.workerTableAdapter = new OrderMenu.OrderDBDataSetTableAdapters.WorkerTableAdapter();
+            this.menuTableAdapter = new OrderMenu.OrderDBDataSet2TableAdapters.MenuTableAdapter();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -70,9 +70,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.orderDBDataSet)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDBDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).BeginInit();
             this.contextMenuStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDBDataSet2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -136,6 +136,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(352, 171);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -166,30 +167,32 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.删除用户ToolStripMenuItem,
-            this.修改用户ToolStripMenuItem});
+            this.AddWorkertoolStripMenuItem2,
+            this.DeleteWorkerToolStripMenuItem,
+            this.UpdateWorkerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
             // 
-            // toolStripMenuItem2
+            // AddWorkertoolStripMenuItem2
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(124, 22);
-            this.toolStripMenuItem2.Text = "添加用户";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.AddWorkertoolStripMenuItem2.Name = "AddWorkertoolStripMenuItem2";
+            this.AddWorkertoolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.AddWorkertoolStripMenuItem2.Text = "添加用户";
+            this.AddWorkertoolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
-            // 删除用户ToolStripMenuItem
+            // DeleteWorkerToolStripMenuItem
             // 
-            this.删除用户ToolStripMenuItem.Name = "删除用户ToolStripMenuItem";
-            this.删除用户ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.删除用户ToolStripMenuItem.Text = "删除用户";
+            this.DeleteWorkerToolStripMenuItem.Name = "DeleteWorkerToolStripMenuItem";
+            this.DeleteWorkerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.DeleteWorkerToolStripMenuItem.Text = "删除用户";
+            this.DeleteWorkerToolStripMenuItem.Click += new System.EventHandler(this.DeleteWorkerToolStripMenuItem_Click);
             // 
-            // 修改用户ToolStripMenuItem
+            // UpdateWorkerToolStripMenuItem
             // 
-            this.修改用户ToolStripMenuItem.Name = "修改用户ToolStripMenuItem";
-            this.修改用户ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.修改用户ToolStripMenuItem.Text = "修改用户";
+            this.UpdateWorkerToolStripMenuItem.Name = "UpdateWorkerToolStripMenuItem";
+            this.UpdateWorkerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.UpdateWorkerToolStripMenuItem.Text = "修改用户";
+            this.UpdateWorkerToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // workerBindingSource
             // 
@@ -214,46 +217,9 @@
             this.tabPage2.Text = "菜单管理";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(375, 210);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "房间管理";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(375, 210);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "餐桌管理";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // workerTableAdapter
-            // 
-            this.workerTableAdapter.ClearBeforeFill = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(7, 7);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 21);
-            this.textBox2.TabIndex = 0;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(114, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "搜索";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -267,22 +233,9 @@
             this.dataGridView2.Location = new System.Drawing.Point(7, 35);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(448, 150);
             this.dataGridView2.TabIndex = 2;
-            // 
-            // orderDBDataSet2
-            // 
-            this.orderDBDataSet2.DataSetName = "OrderDBDataSet2";
-            this.orderDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // menuBindingSource
-            // 
-            this.menuBindingSource.DataMember = "Menu";
-            this.menuBindingSource.DataSource = this.orderDBDataSet2;
-            // 
-            // menuTableAdapter
-            // 
-            this.menuTableAdapter.ClearBeforeFill = true;
             // 
             // iDDataGridViewTextBoxColumn1
             // 
@@ -314,17 +267,18 @@
             // contextMenuStrip2
             // 
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.添加菜ToolStripMenuItem,
+            this.AddMenuToolStripMenuItem,
             this.删除菜ToolStripMenuItem,
-            this.修改菜ToolStripMenuItem});
+            this.UpdateMenuToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(113, 70);
             // 
-            // 添加菜ToolStripMenuItem
+            // AddMenuToolStripMenuItem
             // 
-            this.添加菜ToolStripMenuItem.Name = "添加菜ToolStripMenuItem";
-            this.添加菜ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.添加菜ToolStripMenuItem.Text = "添加菜";
+            this.AddMenuToolStripMenuItem.Name = "AddMenuToolStripMenuItem";
+            this.AddMenuToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.AddMenuToolStripMenuItem.Text = "添加菜";
+            this.AddMenuToolStripMenuItem.Click += new System.EventHandler(this.AddMenuToolStripMenuItem_Click);
             // 
             // 删除菜ToolStripMenuItem
             // 
@@ -332,11 +286,64 @@
             this.删除菜ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.删除菜ToolStripMenuItem.Text = "删除菜";
             // 
-            // 修改菜ToolStripMenuItem
+            // UpdateMenuToolStripMenuItem
             // 
-            this.修改菜ToolStripMenuItem.Name = "修改菜ToolStripMenuItem";
-            this.修改菜ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.修改菜ToolStripMenuItem.Text = "修改菜";
+            this.UpdateMenuToolStripMenuItem.Name = "UpdateMenuToolStripMenuItem";
+            this.UpdateMenuToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.UpdateMenuToolStripMenuItem.Text = "修改菜";
+            this.UpdateMenuToolStripMenuItem.Click += new System.EventHandler(this.UpdateMenuToolStripMenuItem_Click);
+            // 
+            // menuBindingSource
+            // 
+            this.menuBindingSource.DataMember = "Menu";
+            this.menuBindingSource.DataSource = this.orderDBDataSet2;
+            // 
+            // orderDBDataSet2
+            // 
+            this.orderDBDataSet2.DataSetName = "OrderDBDataSet2";
+            this.orderDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(114, 7);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "搜索";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(7, 7);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 21);
+            this.textBox2.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(461, 210);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "房间管理";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(461, 210);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "餐桌管理";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // workerTableAdapter
+            // 
+            this.workerTableAdapter.ClearBeforeFill = true;
+            // 
+            // menuTableAdapter
+            // 
+            this.menuTableAdapter.ClearBeforeFill = true;
             // 
             // Admin
             // 
@@ -357,9 +364,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDBDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).EndInit();
             this.contextMenuStrip2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDBDataSet2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -382,9 +389,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem 删除用户ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 修改用户ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddWorkertoolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem DeleteWorkerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UpdateWorkerToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox2;
@@ -396,9 +403,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn styleDataGridViewTextBoxColumn;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem 添加菜ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除菜ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 修改菜ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UpdateMenuToolStripMenuItem;
 
     }
 }

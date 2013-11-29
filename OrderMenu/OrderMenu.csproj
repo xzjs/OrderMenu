@@ -85,6 +85,12 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuEdit.Designer.cs">
+      <DependentUpon>MenuEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuHelper.cs" />
     <Compile Include="OrderDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -125,6 +131,9 @@
     <Compile Include="WorkerMenuHelper.cs" />
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuEdit.resx">
+      <DependentUpon>MenuEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reception.resx">
       <DependentUpon>Reception.cs</DependentUpon>

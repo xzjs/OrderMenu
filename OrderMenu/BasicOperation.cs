@@ -274,50 +274,53 @@ namespace OrderMenu
                     case "OrderMenu.Worker":
                         Worker w = t as Worker;
                         var query1 = (from m in dc.Worker
-                                     where m.ID == w.ID
-                                     select m).SingleOrDefault();
-                        query1 = w;
+                                      where m.ID == w.ID
+                                      select m).SingleOrDefault();
+                        //query1 = w;
+                        query1.Name = w.Name;
+                        query1.Profession = w.Profession;
+                        query1.Pwd = w.Pwd;
                         break;
                     case "OrderMenu.Menu":
                         Menu menu = t as Menu;
                         var query2 = (from n in dc.Menu
-                                     where n.ID == menu.ID
-                                     select n).SingleOrDefault();
+                                      where n.ID == menu.ID
+                                      select n).SingleOrDefault();
                         query2 = menu;
                         break;
                     case "OrderMenu.WorkerMenu":
                         WorkerMenu wm = t as WorkerMenu;
                         var query3 = (from n in dc.WorkerMenu
-                                     where n.ID == wm.ID
-                                     select n).SingleOrDefault();
+                                      where n.ID == wm.ID
+                                      select n).SingleOrDefault();
                         query3 = wm;
                         break;
                     case "OrderMenu.DeskMenu":
                         DeskMenu dm = t as DeskMenu;
                         var query4 = (from n in dc.DeskMenu
-                                     where n.ID == dm.ID
-                                     select n).SingleOrDefault();
+                                      where n.ID == dm.ID
+                                      select n).SingleOrDefault();
                         query4 = dm;
                         break;
                     case "OrderMenu.Room":
                         Room r = t as Room;
                         var query5 = (from n in dc.Room
-                                     where n.ID == r.ID
-                                     select n).SingleOrDefault();
+                                      where n.ID == r.ID
+                                      select n).SingleOrDefault();
                         query5 = r;
                         break;
                     case "OrderMenu.Desk":
                         Desk d = t as Desk;
                         var query6 = (from n in dc.Desk
-                                     where n.ID == d.ID
-                                     select n).SingleOrDefault();
+                                      where n.ID == d.ID
+                                      select n).SingleOrDefault();
                         query6 = d;
                         break;
                     case "OrderMenu.OrderDesk":
                         OrderDesk od = t as OrderDesk;
                         var query7 = (from n in dc.OrderDesk
-                                     where n.ID == od.ID
-                                     select n).SingleOrDefault();
+                                      where n.ID == od.ID
+                                      select n).SingleOrDefault();
                         query7 = od;
                         break;
                     default:
@@ -332,7 +335,13 @@ namespace OrderMenu
             }
         }
 
-        public List<T> Vlookup(T t,string str)
+        /// <summary>
+        /// 按条件查找
+        /// </summary>
+        /// <param name="t">搜索的类型</param>
+        /// <param name="str">搜索的内容</param>
+        /// <returns></returns>
+        public List<T> Vlookup(T t, string str)
         {
             try
             {
@@ -342,18 +351,18 @@ namespace OrderMenu
                     case "OrderMenu.Worker":
                         Worker w = t as Worker;
                         var query = from m in dc.Worker
-                            where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Profession.Contains(str))
-                            select m;
-                            result = (List<T>)(Object)query.ToList();
-                        
+                                    where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Profession.Contains(str))
+                                    select m;
+                        result = (List<T>)(Object)query.ToList();
+
                         break;
                     case "OrderMenu.Menu":
                         Menu menu = t as Menu;
                         var query1 = from m in dc.Menu
-                            where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Price.ToString().Contains(str))||(m.Style.Contains(str))
-                            select m;
-                            result = (List<T>)(Object)query1.ToList();
-                        
+                                     where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Price.ToString().Contains(str)) || (m.Style.Contains(str))
+                                     select m;
+                        result = (List<T>)(Object)query1.ToList();
+
                         break;
                     //case "OrderMenu.WorkerMenu":
                     //    WorkerMenu wm = t as WorkerMenu;
@@ -361,7 +370,7 @@ namespace OrderMenu
                     //        where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Profession.Contains(str))
                     //        select m;
                     //        result = (List<T>)(Object)query2.ToList();
-                        
+
                     //    break;
                     //case "OrderMenu.DeskMenu":
                     //    DeskMenu dm = t as DeskMenu;
@@ -382,19 +391,19 @@ namespace OrderMenu
                     case "OrderMenu.Room":
                         Room r = t as Room;
                         var query2 = from m in dc.Room
-                            where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Specification.Contains(str))
-                            select m;
-                            result = (List<T>)(Object)query2.ToList();
-                        
+                                     where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Specification.Contains(str))
+                                     select m;
+                        result = (List<T>)(Object)query2.ToList();
+
                         break;
-                    case "OrderMenu.Desk":
-                        Desk d = t as Desk;
-                        var query3 = from m in dc.Desk
-                            where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Profession.Contains(str))
-                            select m;
-                            result = (List<T>)(Object)query3.ToList();
-                        
-                        break;
+                    //case "OrderMenu.Desk":
+                    //    Desk d = t as Desk;
+                    //    var query3 = from m in dc.Desk
+                    //                 where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Profession.Contains(str))
+                    //                 select m;
+                    //    result = (List<T>)(Object)query3.ToList();
+
+                    //    break;
                     //case "OrderMenu.OrderDesk":
                     //    OrderDesk od = t as OrderDesk;
                     //    if (od.ID == 0)
@@ -415,6 +424,11 @@ namespace OrderMenu
                         return null;
                 }
                 return result;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

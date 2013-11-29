@@ -22,6 +22,11 @@ namespace OrderMenu
                 button2.Enabled = false;
                 worker = new Worker();
             }
+            else
+            {
+                textBox1.Text = worker.Name.ToString();
+                comboBox1.SelectedItem = worker.Profession;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
