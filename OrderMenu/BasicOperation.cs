@@ -286,7 +286,10 @@ namespace OrderMenu
                         var query2 = (from n in dc.Menu
                                       where n.ID == menu.ID
                                       select n).SingleOrDefault();
-                        query2 = menu;
+                        //query2 = menu;
+                        query2.Name = menu.Name;
+                        query2.Price = menu.Price;
+                        query2.Style = menu.Style;
                         break;
                     case "OrderMenu.WorkerMenu":
                         WorkerMenu wm = t as WorkerMenu;
@@ -307,7 +310,9 @@ namespace OrderMenu
                         var query5 = (from n in dc.Room
                                       where n.ID == r.ID
                                       select n).SingleOrDefault();
-                        query5 = r;
+                        //query5 = r;
+                        query5.Name = r.Name;
+                        query5.Specification = r.Specification;
                         break;
                     case "OrderMenu.Desk":
                         Desk d = t as Desk;

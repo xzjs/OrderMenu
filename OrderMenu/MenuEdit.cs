@@ -16,16 +16,34 @@ namespace OrderMenu
         public MenuEdit(Menu m=null)
         {
             InitializeComponent();
-            menu = m;
-            if (menu == null)
+            try
             {
-                menu = new Menu();
+                menu = m;
+                if (menu == null)
+                {
+                    menu = new Menu();
+                }
+                else
+                {
+                    textBox1.Text = menu.Name;
+                    textBox2.Text = menu.Price.ToString();
+                    using (var dc = new DataClassesDataContext())
+                    {
+                        var query = from n in dc.Menu
+                                    group n by n.Style;
+                        List<string> l = new List<string>();
+                        foreach (var item in query)
+                        {
+                            l.Add(item.Key);
+                        }
+                        comboBox1.DataSource = l;
+                    }
+                    comboBox1.SelectedItem = menu.Style;
+                }
             }
-            else
+            catch(Exception ex)
             {
-                textBox1.Text = menu.Name;
-                textBox2.Text = menu.Price.ToString();
-                comboBox1.SelectedItem = menu.Style;
+
             }
         }
 
@@ -65,5 +83,13 @@ namespace OrderMenu
                 }
             }
         }
+
+        private void MenuEdit_Load(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        
     }
 }
