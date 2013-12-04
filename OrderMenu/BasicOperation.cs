@@ -401,14 +401,14 @@ namespace OrderMenu
                         result = (List<T>)(Object)query2.ToList();
 
                         break;
-                    //case "OrderMenu.Desk":
-                    //    Desk d = t as Desk;
-                    //    var query3 = from m in dc.Desk
-                    //                 where (m.ID.ToString().Contains(str)) || (m.Name.Contains(str)) || (m.Profession.Contains(str))
-                    //                 select m;
-                    //    result = (List<T>)(Object)query3.ToList();
+                    case "OrderMenu.Desk":
+                        Desk d = t as Desk;
+                        var query3 = from m in dc.Desk
+                                     where (m.ID.ToString().Contains(str)) || (m.RoomID.ToString().Contains(str)) || (m.Num.ToString().Contains(str)) || (m.WorkID.ToString().Contains(str)) || (m.Room.Name.Contains(str)) || (m.Worker.Name.Contains(str))
+                                     select m;
+                        result = (List<T>)(Object)query3.ToList();
 
-                    //    break;
+                        break;
                     //case "OrderMenu.OrderDesk":
                     //    OrderDesk od = t as OrderDesk;
                     //    if (od.ID == 0)
@@ -430,7 +430,7 @@ namespace OrderMenu
                 }
                 return result;
             }
-            catch
+            catch(Exception ex)
             {
                 return null;
             }

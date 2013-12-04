@@ -11,6 +11,8 @@ namespace OrderMenu
 {
     public partial class Cook : Form
     {
+        public Worker worker = new Worker();
+
         public Cook(Worker w)
         {
             InitializeComponent();

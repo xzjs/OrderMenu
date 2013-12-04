@@ -19,6 +19,17 @@ namespace OrderMenu
             try
             {
                 menu = m;
+                using (var dc = new DataClassesDataContext())
+                {
+                    var query = from n in dc.Menu
+                                group n by n.Style;
+                    List<string> l = new List<string>();
+                    foreach (var item in query)
+                    {
+                        l.Add(item.Key);
+                    }
+                    comboBox1.DataSource = l;
+                }
                 if (menu == null)
                 {
                     menu = new Menu();
@@ -27,17 +38,7 @@ namespace OrderMenu
                 {
                     textBox1.Text = menu.Name;
                     textBox2.Text = menu.Price.ToString();
-                    using (var dc = new DataClassesDataContext())
-                    {
-                        var query = from n in dc.Menu
-                                    group n by n.Style;
-                        List<string> l = new List<string>();
-                        foreach (var item in query)
-                        {
-                            l.Add(item.Key);
-                        }
-                        comboBox1.DataSource = l;
-                    }
+                    
                     comboBox1.SelectedItem = menu.Style;
                 }
             }

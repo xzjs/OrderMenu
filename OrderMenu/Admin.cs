@@ -19,6 +19,7 @@ namespace OrderMenu
         {
             InitializeComponent();
             worker = w;
+            radioButton1.Checked = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace OrderMenu
                 case "餐桌管理":
                     BasicOperation<Desk> bod = new BasicOperation<Desk>();
                     Desk d = new Desk();
-                    dataGridView1.DataSource = bod.Vlookup(d, textBox1.Text);
+                    List<Desk> ld=bod.Vlookup(d, textBox1.Text);
                     break;
                 default:
                     break;
@@ -196,7 +197,38 @@ namespace OrderMenu
             {
                 radioselect = rb.Text;
                 EventArgs i = new EventArgs();
-                button1_Click(1,i);
+                button1_Click(1, i);
+            }
+        }
+
+        private void DataGridViewHeader()
+        {
+            switch (radioselect)
+            {
+                case "成员管理":
+                    dataGridView1.Columns[0].HeaderText = "员工号";
+                    dataGridView1.Columns[1].HeaderText = "姓名";
+                    dataGridView1.Columns[2].HeaderText = "职务";
+                    break;
+                case "菜单管理":
+                    dataGridView1.Columns[0].HeaderText = "菜编号";
+                    dataGridView1.Columns[1].HeaderText = "菜名";
+                    dataGridView1.Columns[2].HeaderText = "价格";
+                    dataGridView1.Columns[3].HeaderText = "菜系";
+                    break;
+                case "房间管理":
+                    dataGridView1.Columns[0].HeaderText = "房间号";
+                    dataGridView1.Columns[1].HeaderText = "房间名";
+                    dataGridView1.Columns[2].HeaderText = "房间规格";
+                    break;
+                case "餐桌管理":
+                    dataGridView1.Columns[0].HeaderText = "桌号";
+                    dataGridView1.Columns[1].HeaderText = "房间";
+                    dataGridView1.Columns[2].HeaderText = "人数";
+                    dataGridView1.Columns[3].HeaderText = "服务员";
+                    break;
+                default:
+                    break;
             }
         }
     }

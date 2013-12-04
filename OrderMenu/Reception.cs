@@ -14,6 +14,14 @@ namespace OrderMenu
         public Reception(Worker w)
         {
             InitializeComponent();
+            dgvDataBind();
+        }
+
+        public void dgvDataBind()
+        {
+            BasicOperation<OrderDesk> bood=new BasicOperation<OrderDesk>();
+            OrderDesk od=new OrderDesk();
+            dataGridView1.DataSource = bood.Select(od);
         }
     }
 }
