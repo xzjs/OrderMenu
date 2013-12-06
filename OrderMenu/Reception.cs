@@ -12,11 +12,13 @@ namespace OrderMenu
     public partial class Reception : Form
     {
         public int id;
+        public Worker worker;
 
         public Reception(Worker w)
         {
             InitializeComponent();
             dgvDataBind();
+            worker = w;
         }
 
         public void dgvDataBind()
@@ -24,6 +26,12 @@ namespace OrderMenu
             BasicOperation<OrderDesk> bood=new BasicOperation<OrderDesk>();
             OrderDesk od=new OrderDesk();
             dataGridView1.DataSource = bood.Select(od);
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[0].HeaderText = "编号";
+            dataGridView1.Columns[1].HeaderText = "桌号";
+            dataGridView1.Columns[2].HeaderText = "订餐时间";
+            dataGridView1.Columns[3].HeaderText = "客户名称";
+            dataGridView1.Columns[4].HeaderText = "客户电话";
         }
 
         private void AddToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,7 +63,14 @@ namespace OrderMenu
 
         private void button1_Click(object sender, EventArgs e)
         {
+            PwdEdit pw = new PwdEdit(worker);
+            pw.ShowDialog();
+        }
 
+        private void PayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MenuList ml = new MenuList(id);
+            ml.ShowDialog();
         }  
     }
 }

@@ -32,5 +32,31 @@ namespace OrderMenu
                 MessageBox.Show("原密码错误");
             }
         }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox3.Text != textBox2.Text)
+            {
+                MessageBox.Show("两次输入的密码不一致");
+            }
+            else
+            {
+                button1.Enabled = true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BasicOperation<Worker> bow = new BasicOperation<Worker>();
+            worker.Pwd = DataHelper.md5(textBox2.Text);
+            if (bow.Update(worker))
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("修改失败");
+            }
+        }
     }
 }

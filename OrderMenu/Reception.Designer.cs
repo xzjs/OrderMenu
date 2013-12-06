@@ -46,7 +46,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(13, 13);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(449, 236);
+            this.dataGridView1.Size = new System.Drawing.Size(560, 236);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -57,7 +57,7 @@
             this.DeleteToolStripMenuItem,
             this.PayToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
             // 
             // AddToolStripMenuItem
             // 
@@ -76,14 +76,15 @@
             // PayToolStripMenuItem
             // 
             this.PayToolStripMenuItem.Name = "PayToolStripMenuItem";
-            this.PayToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.PayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.PayToolStripMenuItem.Text = "结账";
+            this.PayToolStripMenuItem.Click += new System.EventHandler(this.PayToolStripMenuItem_Click);
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(13, 259);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(96, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "修改个人密码";
             this.button1.UseVisualStyleBackColor = true;
@@ -93,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 294);
+            this.ClientSize = new System.Drawing.Size(585, 294);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Reception";

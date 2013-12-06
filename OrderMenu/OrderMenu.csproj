@@ -98,6 +98,12 @@
       <DependentUpon>MenuEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuHelper.cs" />
+    <Compile Include="MenuList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuList.Designer.cs">
+      <DependentUpon>MenuList.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderDeskEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuEdit.resx">
       <DependentUpon>MenuEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuList.resx">
+      <DependentUpon>MenuList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderDeskEdit.resx">
       <DependentUpon>OrderDeskEdit.cs</DependentUpon>
