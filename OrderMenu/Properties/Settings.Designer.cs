@@ -26,8 +26,42 @@ namespace OrderMenu.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\DatabaseOrderMenu.md" +
-            "f;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=XZJS-PC\\SQLEXPRESS;Initial Catalog=OrderDB;Persist Security Info=True" +
+            ";User ID=sa;Password=sa")]
+        public string OrderDBConnectionString {
+            get {
+                return ((string)(this["OrderDBConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool dgvfalse {
+            get {
+                return ((bool)(this["dgvfalse"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool dgvtrue {
+            get {
+                return ((bool)(this["dgvtrue"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"
+        <?xml version=""1.0"" encoding=""utf-16""?>
+        <SerializableConnectionString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+        <ConnectionString>Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\DatabaseOrderMenu.mdf;Integrated Security=True</ConnectionString>
+        <ProviderName>System.Data.SqlClient</ProviderName>
+        </SerializableConnectionString>
+      ")]
         public string DatabaseOrderMenuConnectionString {
             get {
                 return ((string)(this["DatabaseOrderMenuConnectionString"]));
@@ -36,12 +70,10 @@ namespace OrderMenu.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=XZJS-PC\\SQLEXPRESS;Initial Catalog=OrderDB;Persist Security Info=True" +
-            ";User ID=sa;Password=sa")]
-        public string OrderDBConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("FullRowSelect")]
+        public global::System.Windows.Forms.DataGridViewSelectionMode dgvselect {
             get {
-                return ((string)(this["OrderDBConnectionString"]));
+                return ((global::System.Windows.Forms.DataGridViewSelectionMode)(this["dgvselect"]));
             }
         }
     }

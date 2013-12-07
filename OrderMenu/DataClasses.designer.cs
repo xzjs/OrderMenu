@@ -620,9 +620,7 @@ namespace OrderMenu
 		
 		private System.Nullable<int> _CookID;
 		
-		private System.Nullable<bool> _CookStatus;
-		
-		private System.Nullable<bool> _Pay;
+		private string _CookStatus;
 		
 		private EntityRef<Desk> _Desk;
 		
@@ -644,10 +642,8 @@ namespace OrderMenu
     partial void OnStatusChanged();
     partial void OnCookIDChanging(System.Nullable<int> value);
     partial void OnCookIDChanged();
-    partial void OnCookStatusChanging(System.Nullable<bool> value);
+    partial void OnCookStatusChanging(string value);
     partial void OnCookStatusChanged();
-    partial void OnPayChanging(System.Nullable<bool> value);
-    partial void OnPayChanged();
     #endregion
 		
 		public DeskMenu()
@@ -770,8 +766,8 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CookStatus", DbType="Bit")]
-		public System.Nullable<bool> CookStatus
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CookStatus", DbType="NVarChar(50)")]
+		public string CookStatus
 		{
 			get
 			{
@@ -786,26 +782,6 @@ namespace OrderMenu
 					this._CookStatus = value;
 					this.SendPropertyChanged("CookStatus");
 					this.OnCookStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pay", DbType="Bit")]
-		public System.Nullable<bool> Pay
-		{
-			get
-			{
-				return this._Pay;
-			}
-			set
-			{
-				if ((this._Pay != value))
-				{
-					this.OnPayChanging(value);
-					this.SendPropertyChanging();
-					this._Pay = value;
-					this.SendPropertyChanged("Pay");
-					this.OnPayChanged();
 				}
 			}
 		}

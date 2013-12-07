@@ -27,6 +27,8 @@ namespace OrderMenu
 
                 if (w.Pwd == DataHelper.md5(textBox2.Text))
                 {
+                    textBox1.Clear();
+                    textBox2.Clear();
                     switch (w.Profession)
                     {
                         case "厨师":

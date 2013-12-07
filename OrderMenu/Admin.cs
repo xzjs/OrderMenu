@@ -12,7 +12,7 @@ namespace OrderMenu
     public partial class Admin : Form
     {
         public Worker worker = new Worker();
-        public int id;
+        public int id = 0;
         public string radioselect;
 
         public Admin(Worker w)
@@ -44,7 +44,7 @@ namespace OrderMenu
                 case "餐桌管理":
                     BasicOperation<Desk> bod = new BasicOperation<Desk>();
                     Desk d = new Desk();
-                    List<Desk> ld=bod.Vlookup(d, textBox1.Text);
+                    List<Desk> ld = bod.Vlookup(d, textBox1.Text);
                     break;
                 default:
                     break;
@@ -121,7 +121,13 @@ namespace OrderMenu
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            id = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value);
+            try
+            {
+                id = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value);
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         private void DeleteWorkerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -187,7 +193,6 @@ namespace OrderMenu
                 default:
                     break;
             }
-
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
