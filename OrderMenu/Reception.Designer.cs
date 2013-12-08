@@ -41,11 +41,15 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Location = new System.Drawing.Point(13, 13);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(560, 236);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
@@ -57,7 +61,7 @@
             this.DeleteToolStripMenuItem,
             this.PayToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 70);
             // 
             // AddToolStripMenuItem
             // 
@@ -76,7 +80,7 @@
             // PayToolStripMenuItem
             // 
             this.PayToolStripMenuItem.Name = "PayToolStripMenuItem";
-            this.PayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.PayToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.PayToolStripMenuItem.Text = "结账";
             this.PayToolStripMenuItem.Click += new System.EventHandler(this.PayToolStripMenuItem_Click);
             // 

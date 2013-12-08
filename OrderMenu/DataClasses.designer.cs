@@ -152,8 +152,6 @@ namespace OrderMenu
 		
 		private System.Nullable<int> _Num;
 		
-		private EntitySet<DeskMenu> _DeskMenu;
-		
 		private EntitySet<OrderDesk> _OrderDesk;
 		
 		private EntityRef<Room> _Room;
@@ -172,7 +170,6 @@ namespace OrderMenu
 		
 		public Desk()
 		{
-			this._DeskMenu = new EntitySet<DeskMenu>(new Action<DeskMenu>(this.attach_DeskMenu), new Action<DeskMenu>(this.detach_DeskMenu));
 			this._OrderDesk = new EntitySet<OrderDesk>(new Action<OrderDesk>(this.attach_OrderDesk), new Action<OrderDesk>(this.detach_OrderDesk));
 			this._Room = default(EntityRef<Room>);
 			OnCreated();
@@ -242,19 +239,6 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Desk_DeskMenu", Storage="_DeskMenu", ThisKey="ID", OtherKey="DeskID")]
-		public EntitySet<DeskMenu> DeskMenu
-		{
-			get
-			{
-				return this._DeskMenu;
-			}
-			set
-			{
-				this._DeskMenu.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Desk_OrderDesk", Storage="_OrderDesk", ThisKey="ID", OtherKey="DeskID")]
 		public EntitySet<OrderDesk> OrderDesk
 		{
@@ -320,18 +304,6 @@ namespace OrderMenu
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_DeskMenu(DeskMenu entity)
-		{
-			this.SendPropertyChanging();
-			entity.Desk = this;
-		}
-		
-		private void detach_DeskMenu(DeskMenu entity)
-		{
-			this.SendPropertyChanging();
-			entity.Desk = null;
 		}
 		
 		private void attach_OrderDesk(OrderDesk entity)
@@ -547,7 +519,7 @@ namespace OrderMenu
 		
 		private int _ID;
 		
-		private System.Nullable<int> _DeskID;
+		private System.Nullable<int> _OrderDeskID;
 		
 		private System.Nullable<int> _MenuID;
 		
@@ -559,9 +531,9 @@ namespace OrderMenu
 		
 		private System.Nullable<int> _WorkerID;
 		
-		private EntityRef<Desk> _Desk;
-		
 		private EntityRef<Menu> _Menu;
+		
+		private EntityRef<OrderDesk> _OrderDesk;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -569,8 +541,8 @@ namespace OrderMenu
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnDeskIDChanging(System.Nullable<int> value);
-    partial void OnDeskIDChanged();
+    partial void OnOrderDeskIDChanging(System.Nullable<int> value);
+    partial void OnOrderDeskIDChanged();
     partial void OnMenuIDChanging(System.Nullable<int> value);
     partial void OnMenuIDChanged();
     partial void OnStatusChanging(string value);
@@ -585,8 +557,8 @@ namespace OrderMenu
 		
 		public DeskMenu()
 		{
-			this._Desk = default(EntityRef<Desk>);
 			this._Menu = default(EntityRef<Menu>);
+			this._OrderDesk = default(EntityRef<OrderDesk>);
 			OnCreated();
 		}
 		
@@ -610,26 +582,26 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeskID", DbType="Int")]
-		public System.Nullable<int> DeskID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDeskID", DbType="Int")]
+		public System.Nullable<int> OrderDeskID
 		{
 			get
 			{
-				return this._DeskID;
+				return this._OrderDeskID;
 			}
 			set
 			{
-				if ((this._DeskID != value))
+				if ((this._OrderDeskID != value))
 				{
-					if (this._Desk.HasLoadedOrAssignedValue)
+					if (this._OrderDesk.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnDeskIDChanging(value);
+					this.OnOrderDeskIDChanging(value);
 					this.SendPropertyChanging();
-					this._DeskID = value;
-					this.SendPropertyChanged("DeskID");
-					this.OnDeskIDChanged();
+					this._OrderDeskID = value;
+					this.SendPropertyChanged("OrderDeskID");
+					this.OnOrderDeskIDChanged();
 				}
 			}
 		}
@@ -738,40 +710,6 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Desk_DeskMenu", Storage="_Desk", ThisKey="DeskID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
-		public Desk Desk
-		{
-			get
-			{
-				return this._Desk.Entity;
-			}
-			set
-			{
-				Desk previousValue = this._Desk.Entity;
-				if (((previousValue != value) 
-							|| (this._Desk.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Desk.Entity = null;
-						previousValue.DeskMenu.Remove(this);
-					}
-					this._Desk.Entity = value;
-					if ((value != null))
-					{
-						value.DeskMenu.Add(this);
-						this._DeskID = value.ID;
-					}
-					else
-					{
-						this._DeskID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Desk");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Menu_DeskMenu", Storage="_Menu", ThisKey="MenuID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
 		public Menu Menu
 		{
@@ -802,6 +740,40 @@ namespace OrderMenu
 						this._MenuID = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Menu");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="OrderDesk_DeskMenu", Storage="_OrderDesk", ThisKey="OrderDeskID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
+		public OrderDesk OrderDesk
+		{
+			get
+			{
+				return this._OrderDesk.Entity;
+			}
+			set
+			{
+				OrderDesk previousValue = this._OrderDesk.Entity;
+				if (((previousValue != value) 
+							|| (this._OrderDesk.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._OrderDesk.Entity = null;
+						previousValue.DeskMenu.Remove(this);
+					}
+					this._OrderDesk.Entity = value;
+					if ((value != null))
+					{
+						value.DeskMenu.Add(this);
+						this._OrderDeskID = value.ID;
+					}
+					else
+					{
+						this._OrderDeskID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("OrderDesk");
 				}
 			}
 		}
@@ -1033,6 +1005,8 @@ namespace OrderMenu
 		
 		private string _ClientPhone;
 		
+		private EntitySet<DeskMenu> _DeskMenu;
+		
 		private EntityRef<Desk> _Desk;
 		
     #region 可扩展性方法定义
@@ -1053,6 +1027,7 @@ namespace OrderMenu
 		
 		public OrderDesk()
 		{
+			this._DeskMenu = new EntitySet<DeskMenu>(new Action<DeskMenu>(this.attach_DeskMenu), new Action<DeskMenu>(this.detach_DeskMenu));
 			this._Desk = default(EntityRef<Desk>);
 			OnCreated();
 		}
@@ -1161,6 +1136,19 @@ namespace OrderMenu
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="OrderDesk_DeskMenu", Storage="_DeskMenu", ThisKey="ID", OtherKey="OrderDeskID")]
+		public EntitySet<DeskMenu> DeskMenu
+		{
+			get
+			{
+				return this._DeskMenu;
+			}
+			set
+			{
+				this._DeskMenu.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Desk_OrderDesk", Storage="_Desk", ThisKey="DeskID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
 		public Desk Desk
 		{
@@ -1213,6 +1201,18 @@ namespace OrderMenu
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_DeskMenu(DeskMenu entity)
+		{
+			this.SendPropertyChanging();
+			entity.OrderDesk = this;
+		}
+		
+		private void detach_DeskMenu(DeskMenu entity)
+		{
+			this.SendPropertyChanging();
+			entity.OrderDesk = null;
 		}
 	}
 	

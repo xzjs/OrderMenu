@@ -58,7 +58,7 @@ namespace OrderMenu
         public void dgv_databind()
         {
             var query = from n in dc.DeskMenu
-                        where n.DeskID == Convert.ToInt32(comboBox2.SelectedItem)
+                        where n.OrderDesk.DeskID == Convert.ToInt32(comboBox2.SelectedItem)
                         select new
                         {
                             n.ID,
@@ -79,7 +79,7 @@ namespace OrderMenu
         private void button1_Click(object sender, EventArgs e)
         {
             dm.MenuID = bom.Vlookup(m, comboBox1.SelectedItem.ToString()).SingleOrDefault().ID;
-            dm.DeskID = Convert.ToInt32(comboBox2.SelectedItem);
+            dm.OrderDesk.DeskID = Convert.ToInt32(comboBox2.SelectedItem);
             dm.WorkerID = worker.ID;
             dm.Status = "未上";
             dm.CookStatus = "已上";

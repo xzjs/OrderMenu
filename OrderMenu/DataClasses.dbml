@@ -5,7 +5,6 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="RoomID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Num" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Desk_DeskMenu" Member="DeskMenu" ThisKey="ID" OtherKey="DeskID" Type="DeskMenu" />
       <Association Name="Desk_OrderDesk" Member="OrderDesk" ThisKey="ID" OtherKey="DeskID" Type="OrderDesk" />
       <Association Name="Room_Desk" Member="Room" ThisKey="RoomID" OtherKey="ID" Type="Room" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
@@ -22,14 +21,14 @@
   <Table Name="dbo.DeskMenu" Member="DeskMenu">
     <Type Name="DeskMenu">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="DeskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderDeskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MenuID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CookID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CookStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="WorkerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Desk_DeskMenu" Member="Desk" ThisKey="DeskID" OtherKey="ID" Type="Desk" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="Menu_DeskMenu" Member="Menu" ThisKey="MenuID" OtherKey="ID" Type="Menu" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="OrderDesk_DeskMenu" Member="OrderDesk" ThisKey="OrderDeskID" OtherKey="ID" Type="OrderDesk" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.Menu" Member="Menu">
@@ -49,6 +48,7 @@
       <Column Name="Time" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ClientName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ClientPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="OrderDesk_DeskMenu" Member="DeskMenu" ThisKey="ID" OtherKey="OrderDeskID" Type="DeskMenu" />
       <Association Name="Desk_OrderDesk" Member="Desk" ThisKey="DeskID" OtherKey="ID" Type="Desk" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>

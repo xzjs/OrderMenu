@@ -49,11 +49,12 @@ namespace OrderMenu
         {
             BasicOperation<OrderDesk> bood = new BasicOperation<OrderDesk>();
             OrderDesk od = new OrderDesk();
-            od.ID = id;
+            od.ID = id == 0 ? Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value) : id;
             od = bood.Select(od).SingleOrDefault();
             if (bood.Delete(od))
             {
                 dgvDataBind();
+                od = new OrderDesk();
             }
             else
             {
@@ -69,8 +70,9 @@ namespace OrderMenu
 
         private void PayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MenuList ml = new MenuList(id);
+            MenuList ml = new MenuList(id == 0 ? Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value) : id);
             ml.ShowDialog();
+            dgvDataBind();
         }  
     }
 }
