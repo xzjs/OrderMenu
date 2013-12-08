@@ -18,7 +18,7 @@ namespace OrderMenu
         private BasicOperation<DeskMenu> bodm = new BasicOperation<DeskMenu>();
         private BasicOperation<Menu> bom = new BasicOperation<OrderMenu.Menu>();
         private DataClassesDataContext dc = new DataClassesDataContext();
-        private DataGridViewCellEventArgs dgvcea = new DataGridViewCellEventArgs(0,0);
+        private DataGridViewCellEventArgs dgvcea = new DataGridViewCellEventArgs(0, 0);
 
         public Waiter(Worker w)
         {
@@ -27,6 +27,7 @@ namespace OrderMenu
             cb2_databind();
             dgv_databind();
             worker = w;
+            this.Text += w.Name;
         }
 
         private void comboBox1_TextChanged(object sender, EventArgs e)
@@ -79,22 +80,35 @@ namespace OrderMenu
         {
             dm.MenuID = bom.Vlookup(m, comboBox1.SelectedItem.ToString()).SingleOrDefault().ID;
             dm.DeskID = Convert.ToInt32(comboBox2.SelectedItem);
-            if (bodm.Add(dm))
+            dm.WorkerID = worker.ID;
+            dm.Status = "未上";
+            dm.CookStatus = "已上";
+            List<int?> li = (from n in dc.WorkerMenu
+                             where n.MenuID == dm.MenuID
+                             select n.WorkerID).ToList();
+            if (li.Count() > 0)
             {
-                dgv_databind();
+                Random r = new Random();
+                dm.CookID = li.ElementAt(r.Next(li.Count()));
+                if (bodm.Add(dm))
+                {
+                    dgv_databind();
+                    dm = new DeskMenu();
+                }
+                else
+                {
+                    MessageBox.Show("添加失败");
+                }
             }
             else
             {
-                MessageBox.Show("添加失败");
+                MessageBox.Show("当前没有厨师会做此菜");
             }
         }
 
         private void backToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (id == 0)
-            {
-                dataGridView1_CellClick(1, dgvcea);
-            }
+            checkDgvClick();
             dm.ID = id;
             if (dataGridView1.SelectedRows[0].Cells[2].Value.ToString() != "已上")
             {
@@ -105,6 +119,7 @@ namespace OrderMenu
                 else
                 {
                     MessageBox.Show("退订失败");
+                    dm = new DeskMenu();
                 }
             }
             else
@@ -115,10 +130,7 @@ namespace OrderMenu
 
         private void servingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (id == 0)
-            {
-                dataGridView1_CellClick(1, dgvcea);
-            }
+            checkDgvClick();
             dm.ID = id;
             dm = bodm.Select(dm).SingleOrDefault();
             dm.Status = "已上";
@@ -141,6 +153,14 @@ namespace OrderMenu
         {
             PwdEdit pe = new PwdEdit(worker);
             pe.ShowDialog();
+        }
+
+        public void checkDgvClick()
+        {
+            if (id == 0)
+            {
+                dataGridView1_CellClick(1, dgvcea);
+            }
         }
     }
 }

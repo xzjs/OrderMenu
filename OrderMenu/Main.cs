@@ -56,7 +56,7 @@ namespace OrderMenu
                     MessageBox.Show("密码错误");
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 MessageBox.Show("用户名错误");
             }

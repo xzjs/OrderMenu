@@ -5,11 +5,9 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="RoomID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Num" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="WorkID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Desk_DeskMenu" Member="DeskMenu" ThisKey="ID" OtherKey="DeskID" Type="DeskMenu" />
       <Association Name="Desk_OrderDesk" Member="OrderDesk" ThisKey="ID" OtherKey="DeskID" Type="OrderDesk" />
       <Association Name="Room_Desk" Member="Room" ThisKey="RoomID" OtherKey="ID" Type="Room" IsForeignKey="true" DeleteRule="CASCADE" />
-      <Association Name="Worker_Desk" Member="Worker" ThisKey="WorkID" OtherKey="ID" Type="Worker" IsForeignKey="true" DeleteRule="SET NULL" />
     </Type>
   </Table>
   <Table Name="dbo.WorkerMenu" Member="WorkerMenu">
@@ -29,9 +27,9 @@
       <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CookID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CookStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WorkerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Desk_DeskMenu" Member="Desk" ThisKey="DeskID" OtherKey="ID" Type="Desk" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="Menu_DeskMenu" Member="Menu" ThisKey="MenuID" OtherKey="ID" Type="Menu" IsForeignKey="true" DeleteRule="CASCADE" />
-      <Association Name="Worker_DeskMenu" Member="Worker" ThisKey="CookID" OtherKey="ID" Type="Worker" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.Menu" Member="Menu">
@@ -68,9 +66,7 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Profession" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Pwd" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Worker_Desk" Member="Desk" ThisKey="ID" OtherKey="WorkID" Type="Desk" />
       <Association Name="Worker_WorkerMenu" Member="WorkerMenu" ThisKey="ID" OtherKey="WorkerID" Type="WorkerMenu" />
-      <Association Name="Worker_DeskMenu" Member="DeskMenu" ThisKey="ID" OtherKey="CookID" Type="DeskMenu" />
     </Type>
   </Table>
 </Database>

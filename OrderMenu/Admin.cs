@@ -44,11 +44,12 @@ namespace OrderMenu
                 case "餐桌管理":
                     BasicOperation<Desk> bod = new BasicOperation<Desk>();
                     Desk d = new Desk();
-                    List<Desk> ld = bod.Vlookup(d, textBox1.Text);
+                    dataGridView1.DataSource = bod.Vlookup(d, textBox1.Text);
                     break;
                 default:
                     break;
             }
+            DataGridViewHeader();
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -214,6 +215,7 @@ namespace OrderMenu
                     dataGridView1.Columns[0].HeaderText = "员工号";
                     dataGridView1.Columns[1].HeaderText = "姓名";
                     dataGridView1.Columns[2].HeaderText = "职务";
+                    dataGridView1.Columns[3].Visible = false;
                     break;
                 case "菜单管理":
                     dataGridView1.Columns[0].HeaderText = "菜编号";
@@ -230,11 +232,17 @@ namespace OrderMenu
                     dataGridView1.Columns[0].HeaderText = "桌号";
                     dataGridView1.Columns[1].HeaderText = "房间";
                     dataGridView1.Columns[2].HeaderText = "人数";
-                    dataGridView1.Columns[3].HeaderText = "服务员";
+                    dataGridView1.Columns[3].Visible = false;
                     break;
                 default:
                     break;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PwdEdit pe = new PwdEdit(worker);
+            pe.ShowDialog();
         }
     }
 }
