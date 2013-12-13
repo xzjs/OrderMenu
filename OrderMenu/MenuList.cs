@@ -29,7 +29,7 @@ namespace OrderMenu
                             n.Menu.Price
                         };
             dataGridView1.DataSource = query;
-            double? total = 0;
+            decimal? total = 0;
             foreach (var item in query)
             {
                 total += item.Price;

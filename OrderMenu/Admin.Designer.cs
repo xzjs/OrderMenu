@@ -67,6 +67,9 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Location = new System.Drawing.Point(12, 63);
@@ -181,7 +184,7 @@
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Name = "Admin";
-            this.Text = "Admin";
+            this.Text = "管理员:";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);

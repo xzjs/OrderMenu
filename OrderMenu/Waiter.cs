@@ -83,7 +83,7 @@ namespace OrderMenu
             dm.WorkerID = worker.ID;
             dm.Status = "未上";
             dm.CookStatus = "已上";
-            List<int?> li = (from n in dc.WorkerMenu
+            List<int> li = (from n in dc.WorkerMenu
                              where n.MenuID == dm.MenuID
                              select n.WorkerID).ToList();
             if (li.Count() > 0)

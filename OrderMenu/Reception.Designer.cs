@@ -102,7 +102,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Reception";
-            this.Text = "Reception";
+            this.Text = "前台：";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);

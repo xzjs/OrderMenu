@@ -19,6 +19,7 @@ namespace OrderMenu
             InitializeComponent();
             dgvDataBind();
             worker = w;
+            this.Text += w.Name;
         }
 
         public void dgvDataBind()

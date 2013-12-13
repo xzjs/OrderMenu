@@ -14,12 +14,16 @@ namespace OrderMenu
         public Worker worker = new Worker();
         public int id = 0;
         public string radioselect;
+        private DataClassesDataContext dc = new DataClassesDataContext();
+        private DataGridViewCellEventArgs dgvcea = new DataGridViewCellEventArgs(1, 1);
+        private EventArgs ea = new EventArgs();
 
         public Admin(Worker w)
         {
             InitializeComponent();
             worker = w;
             radioButton1.Checked = true;
+            this.Text += w.Name;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -42,9 +46,17 @@ namespace OrderMenu
                     dataGridView1.DataSource = bor.Vlookup(r, textBox1.Text);
                     break;
                 case "餐桌管理":
-                    BasicOperation<Desk> bod = new BasicOperation<Desk>();
-                    Desk d = new Desk();
-                    dataGridView1.DataSource = bod.Vlookup(d, textBox1.Text);
+                    //BasicOperation<Desk> bod = new BasicOperation<Desk>();
+                    //Desk d = new Desk();
+                    //dataGridView1.DataSource = bod.Vlookup(d, textBox1.Text);
+                    dataGridView1.DataSource = from n in dc.Desk
+                                               where (n.ID.ToString().Contains(textBox1.Text)) || (n.Num.ToString().Contains(textBox1.Text)) || (n.Room.Name.Contains(textBox1.Text))
+                                               select new
+                                               {
+                                                   n.ID,
+                                                   n.Room.Name,
+                                                   n.Num
+                                               };
                     break;
                 default:
                     break;
@@ -75,11 +87,17 @@ namespace OrderMenu
                 default:
                     break;
             }
-
+            button1_Click(1, ea);
         }
 
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            dataGridView1_CellClick(1, dgvcea);
+            if (id == worker.ID)
+            {
+                MessageBox.Show("自己不允许操作自己");
+                return;
+            }
             switch (radioselect)
             {
                 case "成员管理":
@@ -117,22 +135,22 @@ namespace OrderMenu
                 default:
                     break;
             }
-
+            button1_Click(1, ea);
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                id = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value);
-            }
-            catch (Exception ex)
-            {
-            }
+            id = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value);
         }
 
         private void DeleteWorkerToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            dataGridView1_CellClick(1, dgvcea);
+            if (id == worker.ID)
+            {
+                MessageBox.Show("自己不允许操作自己");
+                return;
+            }
             switch (radioselect)
             {
                 case "成员管理":
@@ -194,6 +212,7 @@ namespace OrderMenu
                 default:
                     break;
             }
+            button1_Click(1, ea);
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
@@ -203,12 +222,14 @@ namespace OrderMenu
             {
                 radioselect = rb.Text;
                 EventArgs i = new EventArgs();
+                textBox1.Clear();
                 button1_Click(1, i);
             }
         }
 
         private void DataGridViewHeader()
         {
+            int i = 0;
             switch (radioselect)
             {
                 case "成员管理":
@@ -216,27 +237,31 @@ namespace OrderMenu
                     dataGridView1.Columns[1].HeaderText = "姓名";
                     dataGridView1.Columns[2].HeaderText = "职务";
                     dataGridView1.Columns[3].Visible = false;
+                    i = 3;
                     break;
                 case "菜单管理":
                     dataGridView1.Columns[0].HeaderText = "菜编号";
                     dataGridView1.Columns[1].HeaderText = "菜名";
                     dataGridView1.Columns[2].HeaderText = "价格";
                     dataGridView1.Columns[3].HeaderText = "菜系";
+                    i = 4;
                     break;
                 case "房间管理":
                     dataGridView1.Columns[0].HeaderText = "房间号";
                     dataGridView1.Columns[1].HeaderText = "房间名";
                     dataGridView1.Columns[2].HeaderText = "房间规格";
+                    i = 3;
                     break;
                 case "餐桌管理":
                     dataGridView1.Columns[0].HeaderText = "桌号";
                     dataGridView1.Columns[1].HeaderText = "房间";
                     dataGridView1.Columns[2].HeaderText = "人数";
-                    dataGridView1.Columns[3].Visible = false;
+                    i = 3;
                     break;
                 default:
                     break;
             }
+            //dataGridView1.Width=dataGridView1.SelectedRows[0].Cells[0].Size
         }
 
         private void button2_Click(object sender, EventArgs e)

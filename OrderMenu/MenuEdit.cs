@@ -51,7 +51,7 @@ namespace OrderMenu
         private void button1_Click(object sender, EventArgs e)
         {
             menu.Name = textBox1.Text;
-            menu.Price =Convert.ToDouble( textBox2.Text);
+            menu.Price =Convert.ToDecimal( textBox2.Text);
             if (comboBox1.Text != null)
             {
                 menu.Style = comboBox1.Text;

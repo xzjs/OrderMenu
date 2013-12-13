@@ -148,9 +148,9 @@ namespace OrderMenu
 		
 		private int _ID;
 		
-		private System.Nullable<int> _RoomID;
+		private int _RoomID;
 		
-		private System.Nullable<int> _Num;
+		private int _Num;
 		
 		private EntitySet<OrderDesk> _OrderDesk;
 		
@@ -162,9 +162,9 @@ namespace OrderMenu
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnRoomIDChanging(System.Nullable<int> value);
+    partial void OnRoomIDChanging(int value);
     partial void OnRoomIDChanged();
-    partial void OnNumChanging(System.Nullable<int> value);
+    partial void OnNumChanging(int value);
     partial void OnNumChanged();
     #endregion
 		
@@ -195,8 +195,8 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomID", DbType="Int")]
-		public System.Nullable<int> RoomID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomID", DbType="Int NOT NULL")]
+		public int RoomID
 		{
 			get
 			{
@@ -219,8 +219,8 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Num", DbType="Int")]
-		public System.Nullable<int> Num
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Num", DbType="Int NOT NULL")]
+		public int Num
 		{
 			get
 			{
@@ -252,7 +252,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Room_Desk", Storage="_Room", ThisKey="RoomID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Room_Desk", Storage="_Room", ThisKey="RoomID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Room Room
 		{
 			get
@@ -279,7 +279,7 @@ namespace OrderMenu
 					}
 					else
 					{
-						this._RoomID = default(Nullable<int>);
+						this._RoomID = default(int);
 					}
 					this.SendPropertyChanged("Room");
 				}
@@ -327,9 +327,9 @@ namespace OrderMenu
 		
 		private int _ID;
 		
-		private System.Nullable<int> _WorkerID;
+		private int _WorkerID;
 		
-		private System.Nullable<int> _MenuID;
+		private int _MenuID;
 		
 		private EntityRef<Menu> _Menu;
 		
@@ -341,9 +341,9 @@ namespace OrderMenu
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnWorkerIDChanging(System.Nullable<int> value);
+    partial void OnWorkerIDChanging(int value);
     partial void OnWorkerIDChanged();
-    partial void OnMenuIDChanging(System.Nullable<int> value);
+    partial void OnMenuIDChanging(int value);
     partial void OnMenuIDChanged();
     #endregion
 		
@@ -374,8 +374,8 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkerID", DbType="Int")]
-		public System.Nullable<int> WorkerID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkerID", DbType="Int NOT NULL")]
+		public int WorkerID
 		{
 			get
 			{
@@ -398,8 +398,8 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuID", DbType="Int")]
-		public System.Nullable<int> MenuID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuID", DbType="Int NOT NULL")]
+		public int MenuID
 		{
 			get
 			{
@@ -422,7 +422,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Menu_WorkerMenu", Storage="_Menu", ThisKey="MenuID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Menu_WorkerMenu", Storage="_Menu", ThisKey="MenuID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Menu Menu
 		{
 			get
@@ -449,14 +449,14 @@ namespace OrderMenu
 					}
 					else
 					{
-						this._MenuID = default(Nullable<int>);
+						this._MenuID = default(int);
 					}
 					this.SendPropertyChanged("Menu");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Worker_WorkerMenu", Storage="_Worker", ThisKey="WorkerID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Worker_WorkerMenu", Storage="_Worker", ThisKey="WorkerID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Worker Worker
 		{
 			get
@@ -483,7 +483,7 @@ namespace OrderMenu
 					}
 					else
 					{
-						this._WorkerID = default(Nullable<int>);
+						this._WorkerID = default(int);
 					}
 					this.SendPropertyChanged("Worker");
 				}
@@ -519,9 +519,9 @@ namespace OrderMenu
 		
 		private int _ID;
 		
-		private System.Nullable<int> _OrderDeskID;
+		private int _OrderDeskID;
 		
-		private System.Nullable<int> _MenuID;
+		private int _MenuID;
 		
 		private string _Status;
 		
@@ -541,9 +541,9 @@ namespace OrderMenu
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnOrderDeskIDChanging(System.Nullable<int> value);
+    partial void OnOrderDeskIDChanging(int value);
     partial void OnOrderDeskIDChanged();
-    partial void OnMenuIDChanging(System.Nullable<int> value);
+    partial void OnMenuIDChanging(int value);
     partial void OnMenuIDChanged();
     partial void OnStatusChanging(string value);
     partial void OnStatusChanged();
@@ -582,8 +582,8 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDeskID", DbType="Int")]
-		public System.Nullable<int> OrderDeskID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDeskID", DbType="Int NOT NULL")]
+		public int OrderDeskID
 		{
 			get
 			{
@@ -606,8 +606,8 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuID", DbType="Int")]
-		public System.Nullable<int> MenuID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuID", DbType="Int NOT NULL")]
+		public int MenuID
 		{
 			get
 			{
@@ -630,7 +630,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Status
 		{
 			get
@@ -670,7 +670,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CookStatus", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CookStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string CookStatus
 		{
 			get
@@ -710,7 +710,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Menu_DeskMenu", Storage="_Menu", ThisKey="MenuID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Menu_DeskMenu", Storage="_Menu", ThisKey="MenuID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Menu Menu
 		{
 			get
@@ -737,14 +737,14 @@ namespace OrderMenu
 					}
 					else
 					{
-						this._MenuID = default(Nullable<int>);
+						this._MenuID = default(int);
 					}
 					this.SendPropertyChanged("Menu");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="OrderDesk_DeskMenu", Storage="_OrderDesk", ThisKey="OrderDeskID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="OrderDesk_DeskMenu", Storage="_OrderDesk", ThisKey="OrderDeskID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public OrderDesk OrderDesk
 		{
 			get
@@ -771,7 +771,7 @@ namespace OrderMenu
 					}
 					else
 					{
-						this._OrderDeskID = default(Nullable<int>);
+						this._OrderDeskID = default(int);
 					}
 					this.SendPropertyChanged("OrderDesk");
 				}
@@ -809,7 +809,7 @@ namespace OrderMenu
 		
 		private string _Name;
 		
-		private System.Nullable<double> _Price;
+		private decimal _Price;
 		
 		private string _Style;
 		
@@ -825,7 +825,7 @@ namespace OrderMenu
     partial void OnIDChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
-    partial void OnPriceChanging(System.Nullable<double> value);
+    partial void OnPriceChanging(decimal value);
     partial void OnPriceChanged();
     partial void OnStyleChanging(string value);
     partial void OnStyleChanged();
@@ -858,7 +858,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Name
 		{
 			get
@@ -878,8 +878,8 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Float")]
-		public System.Nullable<double> Price
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Money NOT NULL")]
+		public decimal Price
 		{
 			get
 			{
@@ -898,7 +898,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Style", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Style", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Style
 		{
 			get
@@ -997,7 +997,7 @@ namespace OrderMenu
 		
 		private int _ID;
 		
-		private System.Nullable<int> _DeskID;
+		private int _DeskID;
 		
 		private string _Time;
 		
@@ -1015,7 +1015,7 @@ namespace OrderMenu
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnDeskIDChanging(System.Nullable<int> value);
+    partial void OnDeskIDChanging(int value);
     partial void OnDeskIDChanged();
     partial void OnTimeChanging(string value);
     partial void OnTimeChanged();
@@ -1052,8 +1052,8 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeskID", DbType="Int")]
-		public System.Nullable<int> DeskID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeskID", DbType="Int NOT NULL")]
+		public int DeskID
 		{
 			get
 			{
@@ -1076,7 +1076,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Time
 		{
 			get
@@ -1096,7 +1096,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientName", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string ClientName
 		{
 			get
@@ -1116,7 +1116,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientPhone", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientPhone", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string ClientPhone
 		{
 			get
@@ -1149,7 +1149,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Desk_OrderDesk", Storage="_Desk", ThisKey="DeskID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Desk_OrderDesk", Storage="_Desk", ThisKey="DeskID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Desk Desk
 		{
 			get
@@ -1176,7 +1176,7 @@ namespace OrderMenu
 					}
 					else
 					{
-						this._DeskID = default(Nullable<int>);
+						this._DeskID = default(int);
 					}
 					this.SendPropertyChanged("Desk");
 				}
@@ -1268,7 +1268,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Name
 		{
 			get
@@ -1288,7 +1288,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Specification", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Specification", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Specification
 		{
 			get
@@ -1410,7 +1410,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Name
 		{
 			get
@@ -1430,7 +1430,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Profession", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Profession", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Profession
 		{
 			get
@@ -1450,7 +1450,7 @@ namespace OrderMenu
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pwd", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pwd", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Pwd
 		{
 			get
