@@ -93,16 +93,16 @@ namespace OrderMenu
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1_CellClick(1, dgvcea);
-            if (id == worker.ID)
-            {
-                MessageBox.Show("自己不允许操作自己");
-                return;
-            }
             switch (radioselect)
             {
                 case "成员管理":
                     BasicOperation<Worker> bow = new BasicOperation<Worker>();
                     Worker w = new Worker();
+                    if (id == worker.ID)
+                    {
+                        MessageBox.Show("自己不允许操作自己");
+                        return;
+                    }
                     w.ID = id;
                     w = bow.Select(w).SingleOrDefault();
                     WorkerEdit we = new WorkerEdit(w);
@@ -146,16 +146,17 @@ namespace OrderMenu
         private void DeleteWorkerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1_CellClick(1, dgvcea);
-            if (id == worker.ID)
-            {
-                MessageBox.Show("自己不允许操作自己");
-                return;
-            }
+
             switch (radioselect)
             {
                 case "成员管理":
                     BasicOperation<Worker> bow = new BasicOperation<Worker>();
                     Worker w = new Worker();
+                    if (id == worker.ID)
+                    {
+                        MessageBox.Show("自己不允许操作自己");
+                        return;
+                    }
                     w.ID = id;
                     w = bow.Select(w).SingleOrDefault();
                     if (bow.Delete(w))

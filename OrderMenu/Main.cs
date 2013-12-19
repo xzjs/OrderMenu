@@ -33,19 +33,19 @@ namespace OrderMenu
                     {
                         case "厨师":
                             Cook c = new Cook(w);
-                            c.ShowDialog();
+                            c.Show();
                             break;
                         case "服务员":
                             Waiter wa = new Waiter(w);
-                            wa.ShowDialog();
+                            wa.Show();
                             break;
                         case "管理员":
                             Admin a = new Admin(w);
-                            a.ShowDialog();
+                            a.Show();
                             break;
                         case "前台":
                             Reception r = new Reception(w);
-                            r.ShowDialog();
+                            r.Show();
                             break;
                         default:
                             return;
