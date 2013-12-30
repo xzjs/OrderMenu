@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -36,7 +35,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            
             this.SuspendLayout();
             // 
             // label1
@@ -97,7 +95,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(211, 20);
             this.comboBox1.TabIndex = 3;
-            
             // 
             // MenuEdit
             // 
@@ -112,7 +109,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "MenuEdit";
-            this.Text = "MenuEdit";
+            this.Text = "菜单编辑";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -45,7 +45,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(175, 10);
+            this.comboBox1.Location = new System.Drawing.Point(204, 10);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 0;
@@ -56,9 +56,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 1;
-            this.label1.Text = "桌号";
+            this.label1.Text = "订单号";
             // 
             // dataGridView1
             // 
@@ -100,7 +100,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(48, 10);
+            this.comboBox2.Location = new System.Drawing.Point(60, 10);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 20);
             this.comboBox2.TabIndex = 4;
@@ -108,7 +108,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(302, 10);
+            this.button1.Location = new System.Drawing.Point(331, 10);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;

@@ -20,6 +20,7 @@ namespace OrderMenu
             if(room == null)
             {
                 room=new Room();
+                comboBox1.SelectedIndex = 0;
             }
             else
             {

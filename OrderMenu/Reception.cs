@@ -13,6 +13,7 @@ namespace OrderMenu
     {
         public int id;
         public Worker worker;
+        private DataGridViewCellEventArgs dgvce;
 
         public Reception(Worker w)
         {
@@ -39,23 +40,33 @@ namespace OrderMenu
         {
             OrderDeskEdit ode = new OrderDeskEdit();
             ode.ShowDialog();
+            dgvDataBind();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            id = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value);
+            if (dataGridView1.RowCount > 0)
+            {
+                id = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value);
+            }
         }
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BasicOperation<OrderDesk> bood = new BasicOperation<OrderDesk>();
             OrderDesk od = new OrderDesk();
-            od.ID = id == 0 ? Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value) : id;
+            dataGridView1_CellClick(1, dgvce);
+            od.ID = id ;
             od = bood.Select(od).SingleOrDefault();
-            if (bood.Delete(od))
+            if(id==0)
+            {
+                MessageBox.Show("请选择退订项目");
+            }
+            else if (bood.Delete(od))
             {
                 dgvDataBind();
                 od = new OrderDesk();
+                id = 0;
             }
             else
             {
@@ -71,9 +82,13 @@ namespace OrderMenu
 
         private void PayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MenuList ml = new MenuList(id == 0 ? Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value) : id);
-            ml.ShowDialog();
-            dgvDataBind();
+            dataGridView1_CellClick(1, dgvce);
+            if (id > 0)
+            {
+                MenuList ml = new MenuList(id);
+                ml.ShowDialog();
+                dgvDataBind();
+            }
         }  
     }
 }

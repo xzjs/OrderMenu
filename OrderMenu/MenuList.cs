@@ -35,6 +35,9 @@ namespace OrderMenu
                 total += item.Price;
             }
             label2.Text = total.ToString();
+            dataGridView1.Columns[0].HeaderText = "编号";
+            dataGridView1.Columns[1].HeaderText = "菜名";
+            dataGridView1.Columns[2].HeaderText = "价格";
         }
 
         private void button1_Click(object sender, EventArgs e)

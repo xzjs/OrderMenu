@@ -28,7 +28,7 @@ namespace OrderMenu
                 {
                     var query = from m in dc.Desk
                                 where (!(from n in dc.OrderDesk
-                                         where n.Time != comboBox1.SelectedItem.ToString()
+                                         where n.Time == comboBox1.SelectedItem.ToString()
                                          select n.DeskID).Contains(m.ID)) && (m.Num >= numericUpDown1.Value) && (m.Room.Specification == comboBox2.SelectedItem.ToString())
                                 select new
                                 {
@@ -37,6 +37,9 @@ namespace OrderMenu
                                     m.Room.Name
                                 };
                     dataGridView1.DataSource = query.ToList();
+                    dataGridView1.Columns[0].HeaderText = "桌号";
+                    dataGridView1.Columns[1].HeaderText = "人数";
+                    dataGridView1.Columns[2].HeaderText = "房间名";
                 }
             }
             catch (Exception ex)
@@ -46,7 +49,10 @@ namespace OrderMenu
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            id = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value);
+            if (dataGridView1.RowCount > 0)
+            {
+                id = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

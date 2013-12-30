@@ -95,7 +95,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "DeskEdit";
-            this.Text = "DeskEdit";
+            this.Text = "餐桌编辑";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

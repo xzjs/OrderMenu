@@ -172,6 +172,7 @@
             // 
             // Admin
             // 
+            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 404);
@@ -183,6 +184,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
+            this.KeyPreview = true;
             this.Name = "Admin";
             this.Text = "管理员:";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

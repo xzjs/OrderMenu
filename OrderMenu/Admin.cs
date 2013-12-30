@@ -46,9 +46,6 @@ namespace OrderMenu
                     dataGridView1.DataSource = bor.Vlookup(r, textBox1.Text);
                     break;
                 case "餐桌管理":
-                    //BasicOperation<Desk> bod = new BasicOperation<Desk>();
-                    //Desk d = new Desk();
-                    //dataGridView1.DataSource = bod.Vlookup(d, textBox1.Text);
                     dataGridView1.DataSource = from n in dc.Desk
                                                where (n.ID.ToString().Contains(textBox1.Text)) || (n.Num.ToString().Contains(textBox1.Text)) || (n.Room.Name.Contains(textBox1.Text))
                                                select new
@@ -230,7 +227,6 @@ namespace OrderMenu
 
         private void DataGridViewHeader()
         {
-            int i = 0;
             switch (radioselect)
             {
                 case "成员管理":
@@ -238,31 +234,26 @@ namespace OrderMenu
                     dataGridView1.Columns[1].HeaderText = "姓名";
                     dataGridView1.Columns[2].HeaderText = "职务";
                     dataGridView1.Columns[3].Visible = false;
-                    i = 3;
                     break;
                 case "菜单管理":
                     dataGridView1.Columns[0].HeaderText = "菜编号";
                     dataGridView1.Columns[1].HeaderText = "菜名";
                     dataGridView1.Columns[2].HeaderText = "价格";
                     dataGridView1.Columns[3].HeaderText = "菜系";
-                    i = 4;
                     break;
                 case "房间管理":
                     dataGridView1.Columns[0].HeaderText = "房间号";
                     dataGridView1.Columns[1].HeaderText = "房间名";
                     dataGridView1.Columns[2].HeaderText = "房间规格";
-                    i = 3;
                     break;
                 case "餐桌管理":
                     dataGridView1.Columns[0].HeaderText = "桌号";
                     dataGridView1.Columns[1].HeaderText = "房间";
                     dataGridView1.Columns[2].HeaderText = "人数";
-                    i = 3;
                     break;
                 default:
                     break;
             }
-            //dataGridView1.Width=dataGridView1.SelectedRows[0].Cells[0].Size
         }
 
         private void button2_Click(object sender, EventArgs e)

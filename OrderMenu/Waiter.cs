@@ -11,7 +11,7 @@ namespace OrderMenu
 {
     public partial class Waiter : Form
     {
-        public int id;
+        public int id, flag;//flag为判断窗口是否第一次加载，为了解决dropdownlist下拉菜单提前显示问题
         private Worker worker;
         private DeskMenu dm = new DeskMenu();
         private Menu m = new Menu();
@@ -32,17 +32,24 @@ namespace OrderMenu
 
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
-            int i = cb1_databind();
-            if (i > 0)
+            if (flag == 1)
             {
-                comboBox1.DroppedDown = true;
+                if (cb1_databind() > 0)
+                {
+                    comboBox1.DroppedDown = true;
+                }
+            }
+            else
+            {
+                flag = 1;
             }
         }
 
         public int cb1_databind()
         {
+            string s = comboBox1.Text;
             var query = from n in dc.Menu
-                        where n.Name.Contains(comboBox1.Text)
+                        where n.Name.Contains(s)
                         select n.Name;
             comboBox1.DataSource = query;
             return query.Count();
@@ -51,14 +58,14 @@ namespace OrderMenu
         public void cb2_databind()
         {
             var query = from n in dc.OrderDesk
-                        select n.DeskID;
+                        select n.ID;
             comboBox2.DataSource = query;
         }
 
         public void dgv_databind()
         {
             var query = from n in dc.DeskMenu
-                        where n.OrderDesk.DeskID == Convert.ToInt32(comboBox2.SelectedItem)
+                        where n.OrderDesk.ID == Convert.ToInt32(comboBox2.SelectedItem)
                         select new
                         {
                             n.ID,
@@ -78,14 +85,22 @@ namespace OrderMenu
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dm.MenuID = bom.Vlookup(m, comboBox1.SelectedItem.ToString()).SingleOrDefault().ID;
-            dm.OrderDesk.DeskID = Convert.ToInt32(comboBox2.SelectedItem);
+            //dm.MenuID = bom.Vlookup(m, comboBox1.SelectedItem.ToString()).SingleOrDefault().ID;
+            dm.MenuID = (from n in dc.Menu
+                         where n.Name == comboBox1.SelectedItem.ToString()
+                         select n.ID).SingleOrDefault();
+            if (comboBox2.SelectedItem == null)
+            {
+                MessageBox.Show("请选择餐桌号");
+                return;
+            }
+            dm.OrderDeskID= Convert.ToInt32(comboBox2.SelectedItem);
             dm.WorkerID = worker.ID;
             dm.Status = "未上";
-            dm.CookStatus = "已上";
+            dm.CookStatus = "未做";
             List<int> li = (from n in dc.WorkerMenu
-                             where n.MenuID == dm.MenuID
-                             select n.WorkerID).ToList();
+                            where n.MenuID == dm.MenuID
+                            select n.WorkerID).ToList();
             if (li.Count() > 0)
             {
                 Random r = new Random();
@@ -105,6 +120,7 @@ namespace OrderMenu
                 MessageBox.Show("当前没有厨师会做此菜");
             }
         }
+
 
         private void backToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -137,6 +153,7 @@ namespace OrderMenu
             if (bodm.Update(dm))
             {
                 dgv_databind();
+                dm = new DeskMenu();
             }
             else
             {

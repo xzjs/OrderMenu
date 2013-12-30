@@ -160,7 +160,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "PwdEdit";
-            this.Text = "PwdEdit";
+            this.Text = "修改密码";
             this.ResumeLayout(false);
             this.PerformLayout();
 

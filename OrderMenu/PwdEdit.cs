@@ -20,31 +20,6 @@ namespace OrderMenu
             label4.Text = w.Name;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            if (DataHelper.md5(textBox1.Text) == worker.Pwd)
-            {
-                textBox2.Enabled = true;
-                textBox3.Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show("原密码错误");
-            }
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            if (textBox3.Text != textBox2.Text)
-            {
-                MessageBox.Show("两次输入的密码不一致");
-            }
-            else
-            {
-                button1.Enabled = true;
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             BasicOperation<Worker> bow = new BasicOperation<Worker>();
@@ -56,6 +31,32 @@ namespace OrderMenu
             else
             {
                 MessageBox.Show("修改失败");
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (DataHelper.md5(textBox1.Text) == worker.Pwd)
+            {
+                textBox2.Enabled = true;
+                textBox3.Enabled = true;
+            }
+            else
+            {
+                textBox2.Enabled = false;
+                textBox3.Enabled = false;
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text == textBox3.Text)
+            {
+                button1.Enabled = true;
+            }
+            else
+            {
+                button1.Enabled = false;
             }
         }
     }

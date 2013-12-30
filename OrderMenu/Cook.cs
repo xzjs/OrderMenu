@@ -108,5 +108,10 @@ namespace OrderMenu
                 MessageBox.Show("修改失败");
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dgvBind();
+        }
     }
 }

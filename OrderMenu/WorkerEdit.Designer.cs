@@ -107,7 +107,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "WorkerEdit";
-            this.Text = "WorkerEdit";
+            this.Text = "员工编辑";
             this.ResumeLayout(false);
             this.PerformLayout();
 

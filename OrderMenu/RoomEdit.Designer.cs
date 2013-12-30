@@ -73,6 +73,7 @@
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "大厅",
@@ -95,7 +96,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "RoomEdit";
-            this.Text = "RoomEdit";
+            this.Text = "房间编辑";
             this.ResumeLayout(false);
             this.PerformLayout();
 
