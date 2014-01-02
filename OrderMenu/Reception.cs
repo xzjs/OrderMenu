@@ -14,6 +14,7 @@ namespace OrderMenu
         public int id;
         public Worker worker;
         private DataGridViewCellEventArgs dgvce;
+        private DataClassesDataContext dc = new DataClassesDataContext();
 
         public Reception(Worker w)
         {
@@ -25,8 +26,8 @@ namespace OrderMenu
 
         public void dgvDataBind()
         {
-            BasicOperation<OrderDesk> bood=new BasicOperation<OrderDesk>();
-            OrderDesk od=new OrderDesk();
+            BasicOperation<OrderDesk> bood = new BasicOperation<OrderDesk>();
+            OrderDesk od = new OrderDesk();
             dataGridView1.DataSource = bood.Select(od);
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[0].HeaderText = "编号";
@@ -56,21 +57,30 @@ namespace OrderMenu
             BasicOperation<OrderDesk> bood = new BasicOperation<OrderDesk>();
             OrderDesk od = new OrderDesk();
             dataGridView1_CellClick(1, dgvce);
-            od.ID = id ;
+            od.ID = id;
             od = bood.Select(od).SingleOrDefault();
-            if(id==0)
+            if (id == 0)
             {
                 MessageBox.Show("请选择退订项目");
             }
-            else if (bood.Delete(od))
+            else if ((from m in dc.DeskMenu
+                      where m.OrderDeskID == od.ID
+                      select m).Count() == 0)
             {
-                dgvDataBind();
-                od = new OrderDesk();
-                id = 0;
+                if (bood.Delete(od))
+                {
+                    dgvDataBind();
+                    od = new OrderDesk();
+                    id = 0;
+                }
+                else
+                {
+                    MessageBox.Show("删除失败");
+                }
             }
             else
             {
-                MessageBox.Show("删除失败");
+                MessageBox.Show("已上菜，不可退订");
             }
         }
 
@@ -89,6 +99,6 @@ namespace OrderMenu
                 ml.ShowDialog();
                 dgvDataBind();
             }
-        }  
+        }
     }
 }

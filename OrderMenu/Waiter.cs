@@ -149,15 +149,22 @@ namespace OrderMenu
             checkDgvClick();
             dm.ID = id;
             dm = bodm.Select(dm).SingleOrDefault();
-            dm.Status = "已上";
-            if (bodm.Update(dm))
+            if (dm.CookStatus == "已做")
             {
-                dgv_databind();
-                dm = new DeskMenu();
+                dm.Status = "已上";
+                if (bodm.Update(dm))
+                {
+                    dgv_databind();
+                    dm = new DeskMenu();
+                }
+                else
+                {
+                    MessageBox.Show("修改失败");
+                }
             }
             else
             {
-                MessageBox.Show("修改失败");
+                MessageBox.Show("该菜尚未做好");
             }
         }
 
